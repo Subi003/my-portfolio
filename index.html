@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subi | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for Subi featuring projects, skills, and contact information."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#home" class="brand" aria-label="Home">Subi</a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Frontend developer</p>
+            <h1>Building elegant digital experiences.</h1>
+            <p class="subtitle">
+              I design and develop responsive web interfaces that balance user needs,
+              performance, and clean code.
+            </p>
+            <div class="cta-group">
+              <a class="btn btn-primary" href="#projects">View projects</a>
+              <a class="btn btn-secondary" href="#contact">Let's talk</a>
+            </div>
+            <ul class="meta-list" aria-label="Quick facts">
+              <li>2+ years experience</li>
+              <li>Available for freelance work</li>
+              <li>Based remotely</li>
+            </ul>
+          </div>
+
+          <div class="hero-card" aria-label="Profile summary card">
+            <div class="avatar">S</div>
+            <div class="card-body">
+              <h2>Subi</h2>
+              <p>UI developer • React enthusiast • Problem solver</p>
+            </div>
+            <div class="stat-grid">
+              <div>
+                <strong>8</strong>
+                <span>Projects</span>
+              </div>
+              <div>
+                <strong>4</strong>
+                <span>Clients</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>Passion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container section-grid">
+          <div>
+            <p class="section-label">About me</p>
+            <h2>Turning ideas into polished web experiences.</h2>
+          </div>
+          <div>
+            <p>
+              I’m a frontend-focused developer who enjoys creating intuitive interfaces,
+              smooth interactions, and accessible experiences. My work blends design sensibility
+              with practical engineering, helping products feel fast, clear, and memorable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section alt-section">
+        <div class="container">
+          <p class="section-label">Skills</p>
+          <h2>What I work with</h2>
+          <div class="card-grid">
+            <article class="info-card">
+              <h3>Frontend</h3>
+              <p>HTML5, CSS3, JavaScript, responsive design, accessibility.</p>
+            </article>
+            <article class="info-card">
+              <h3>Frameworks</h3>
+              <p>React, component architecture, reusable UI patterns.</p>
+            </article>
+            <article class="info-card">
+              <h3>Tools</h3>
+              <p>Git, GitHub, Figma, VS Code, performance optimization.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <p class="section-label">Projects</p>
+          <h2>Selected work</h2>
+          <div class="project-grid">
+            <article class="project-card">
+              <span class="project-tag">Portfolio</span>
+              <h3>Creative personal website</h3>
+              <p>Designed and built a sleek portfolio experience with clear visual hierarchy and responsive layout.</p>
+            </article>
+            <article class="project-card">
+              <span class="project-tag">Business</span>
+              <h3>Landing page redesign</h3>
+              <p>Improved conversion-focused layout and mobile usability for a product marketing site.</p>
+            </article>
+            <article class="project-card">
+              <span class="project-tag">Dashboard</span>
+              <h3>Analytics UI</h3>
+              <p>Created a modern dashboard interface with card-based sections and data-driven visual components.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <div class="container contact-box">
+          <div>
+            <p class="section-label">Contact</p>
+            <h2>Let’s build something meaningful.</h2>
+          </div>
+          <a class="btn btn-primary" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> Subi. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
