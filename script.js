@@ -18,19 +18,74 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  const repoCount = document.getElementById("repoCount");
+  const repoCountEl = document.getElementById("repoCount");
+  const repoListEl = document.getElementById("repoList");
+
   const githubUsername = "Subi003";
+  const fallbackRepos = [
+    { name: "appsmith", description: "Admin panels, internal tools, and dashboard platform." },
+    { name: "the-saas-spend-auditor", description: "MVP for SaaS spend audit and reporting." },
+    { name: "News-Website", description: "News website with content and admin workflow management." },
+    { name: "Smart_Attendence_System", description: "Student and teacher attendance management system." },
+    { name: "Mobile-Number-Management", description: "Utility app for storing and managing mobile numbers." },
+    { name: "my-portfolio", description: "Personal portfolio website." },
+    { name: "Chatbot", description: "JavaScript-based interactive chatbot project." },
+    { name: "Product_Video_Create", description: "Social media product video creation project." },
+    { name: "Template_Wedding_Website", description: "Elegant event landing page template." },
+    { name: "compliance-system", description: "Compliance management system project." }
+  ];
 
   try {
     const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?per_page=100`);
-    const reposData = await reposResponse.json();
+    const repos = await reposResponse.json();
 
-    if (Array.isArray(reposData) && repoCount) {
-      repoCount.textContent = reposData.length;
+    const safeRepos = Array.isArray(repos) && repos.length ? repos : fallbackRepos;
+
+    if (repoCountEl) {
+      repoCountEl.textContent = safeRepos.length;
+    }
+
+    if (repoListEl) {
+      const topRepos = safeRepos
+        .filter((repo) => repo && repo.name)
+        .slice(0, 9)
+        .map((repo) => {
+          const cleanName = repo.name.replace(/[-_]/g, " ");
+          const cleanDescription = repo.description || "Project built for practical business or developer use.";
+          return `
+            <article class="project-card">
+              <span class="project-tag">GitHub</span>
+              <h3>${cleanName}</h3>
+              <p>${cleanDescription}</p>
+              <a href="https://github.com/${githubUsername}/${repo.name}" target="_blank" rel="noreferrer" class="project-link">
+                View repository <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </article>
+          `;
+        })
+        .join("");
+
+      repoListEl.innerHTML = topRepos;
     }
   } catch (error) {
-    if (repoCount) {
-      repoCount.textContent = "14";
+    if (repoCountEl) {
+      repoCountEl.textContent = fallbackRepos.length;
+    }
+
+    if (repoListEl) {
+      repoListEl.innerHTML = fallbackRepos
+        .slice(0, 9)
+        .map((repo) => `
+          <article class="project-card">
+            <span class="project-tag">GitHub</span>
+            <h3>${repo.name}</h3>
+            <p>${repo.description}</p>
+            <a href="https://github.com/${githubUsername}/${repo.name}" target="_blank" rel="noreferrer" class="project-link">
+              View repository <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </article>
+        `)
+        .join("");
     }
   }
 });

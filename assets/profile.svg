@@ -1,0 +1,23 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="57" y1="77" x2="762" y2="732" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7F0FF"/>
+      <stop offset="1" stop-color="#8FB9FF"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="217" y1="515" x2="597" y2="712" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2F5F8"/>
+      <stop offset="1" stop-color="#D9E4F2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" rx="40" fill="url(#bg)"/>
+  <circle cx="399" cy="213" r="152" fill="#E8C3A0"/>
+  <path d="M298 208C298 122.124 365.124 55 451 55H473C558.876 55 626 122.124 626 208V241C626 326.876 558.876 394 473 394H451C365.124 394 298 326.876 298 241V208Z" fill="#1F1F1F"/>
+  <path d="M264 760C274 652.598 343.073 567 431.9 567H537.1C625.927 567 695 652.598 705 760V800H264V760Z" fill="url(#shirt)"/>
+  <path d="M277 570L375 620L451 760H304L277 570Z" fill="#E9EEF7"/>
+  <path d="M526 570L423 620L347 760H494L526 570Z" fill="#EEF4FC"/>
+  <circle cx="359" cy="194" r="10" fill="#1F1F1F"/>
+  <circle cx="481" cy="194" r="10" fill="#1F1F1F"/>
+  <path d="M388 247C412 261 447 261 472 247" stroke="#6D3A2B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M434 286C418 298 396 298 380 286" stroke="#9D5F4E" stroke-width="6" stroke-linecap="round"/>
+  <text x="400" y="688" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#0D1730">SB</text>
+</svg>
