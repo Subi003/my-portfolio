@@ -4,6 +4,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  const themeToggle = document.getElementById("themeToggle");
+  const storedTheme = localStorage.getItem("portfolio-theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+
+  const applyTheme = (theme) => {
+    const isLight = theme === "light";
+    document.body.classList.toggle("light-theme", isLight);
+
+    if (themeToggle) {
+      const icon = themeToggle.querySelector("i");
+      const label = themeToggle.querySelector("span");
+
+      if (icon) {
+        icon.className = isLight ? "fa-solid fa-sun" : "fa-solid fa-moon";
+      }
+
+      if (label) {
+        label.textContent = isLight ? "Light" : "Dark";
+      }
+
+      themeToggle.setAttribute("aria-label", isLight ? "Toggle dark mode" : "Toggle light mode");
+    }
+  };
+
+  applyTheme(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.body.classList.contains("light-theme") ? "dark" : "light";
+      localStorage.setItem("portfolio-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  }
+
   const navLinks = document.querySelectorAll('.main-nav a, .btn[href^="#"]');
   navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
