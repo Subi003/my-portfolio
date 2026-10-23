@@ -9,30 +9,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     const bgStyles = document.createElement("style");
     bgStyles.textContent = `
       @keyframes techDrift {
-        0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
-        50% { transform: translate3d(18px, -16px, 0) scale(1.08); opacity: 0.8; }
-        100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        25% { transform: translate3d(12px, -18px, 0) scale(1.05); }
+        50% { transform: translate3d(26px, -32px, 0) scale(1.12); }
+        75% { transform: translate3d(18px, -14px, 0) scale(1.04); }
+        100% { transform: translate3d(0, 0, 0) scale(1); }
       }
 
       @keyframes techPulse {
-        0% { transform: scale(0.9); opacity: 0.18; }
-        50% { transform: scale(1.06); opacity: 0.42; }
-        100% { transform: scale(0.9); opacity: 0.18; }
+        0% { transform: scale(0.85); opacity: 0.15; }
+        30% { transform: scale(1.02); opacity: 0.38; }
+        50% { transform: scale(1.1); opacity: 0.58; }
+        80% { transform: scale(1.18); opacity: 0.28; }
+        100% { transform: scale(0.85); opacity: 0.15; }
       }
 
       .tech-orb {
         position: absolute;
         border-radius: 50%;
-        background: radial-gradient(circle at 30% 30%, rgba(95, 138, 255, 0.32), rgba(95, 138, 255, 0.15) 38%, transparent 70%);
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(121,168,255,0.3) 35%, transparent 70%);
         filter: blur(2px);
-        animation: techDrift 24s ease-in-out infinite alternate;
+        animation: techDrift 18s ease-in-out infinite;
       }
 
       .tech-pulse {
         position: absolute;
         border-radius: 50%;
-        border: 1px solid rgba(95, 138, 255, 0.18);
-        animation: techPulse 14s ease-in-out infinite;
+        border: 1px solid rgba(121,168,255,0.2);
+        animation: techPulse 8s linear infinite;
       }
     `;
     document.head.appendChild(bgStyles);
@@ -46,44 +50,43 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     [orb1, orb2, orb3].forEach((orb, index) => {
       orb.className = "tech-orb";
-      orb.style.width = `${[16, 18, 12][index]}rem`;
-      orb.style.height = `${[16, 18, 12][index]}rem`;
-      orb.style.animationDelay = `${index * 2.2}s`;
+      orb.style.width = `${[18, 22, 14][index]}rem`;
+      orb.style.height = `${[18, 22, 14][index]}rem`;
+      orb.style.animationDelay = `${index * 1.8}s`;
     });
 
-    orb1.style.top = "12%";
-    orb1.style.right = "18%";
+    orb1.style.top = "8%";
+    orb1.style.right = "12%";
 
-    orb2.style.left = "10%";
-    orb2.style.bottom = "12%";
+    orb2.style.left = "5%";
+    orb2.style.bottom = "10%";
 
-    orb3.style.right = "30%";
-    orb3.style.bottom = "22%";
+    orb3.style.right = "24%";
+    orb3.style.bottom = "18%";
 
     [pulse1, pulse2, pulse3].forEach((pulse, index) => {
       pulse.className = "tech-pulse";
-      pulse.style.width = "14rem";
-      pulse.style.height = "14rem";
-      pulse.style.animationDelay = `${index * 2.8}s`;
+      pulse.style.width = "16rem";
+      pulse.style.height = "16rem";
+      pulse.style.animationDelay = `${index * 2.2}s`;
     });
 
-    pulse1.style.top = "18%";
-    pulse1.style.left = "18%";
+    pulse1.style.top = "15%";
+    pulse1.style.left = "20%";
 
-    pulse2.style.bottom = "16%";
-    pulse2.style.right = "20%";
+    pulse2.style.bottom = "18%";
+    pulse2.style.right = "18%";
 
     pulse3.style.top = "42%";
-    pulse3.style.left = "50%";
-    pulse3.style.transform = "translateX(-50%)";
+    pulse3.style.left = "calc(50% - 8rem)";
 
     bg.style.position = "fixed";
     bg.style.inset = "0";
     bg.style.pointerEvents = "none";
     bg.style.zIndex = "0";
     bg.style.overflow = "hidden";
-    bg.style.background = "linear-gradient(180deg, rgba(236,240,247,0.95), rgba(230,236,244,0.82))";
-    bg.style.opacity = "1";
+    bg.style.background = "linear-gradient(rgba(121, 168, 255, 0.05), rgba(121, 168, 255, 0.02)), repeating-linear-gradient(90deg, rgba(121,168,255,0.06) 0, rgba(121,168,255,0.06) 1px, transparent 1px, transparent 120px), linear-gradient(180deg, rgba(15, 23, 42, 0.02), rgba(15, 23, 42, 0.08))";
+    bg.style.opacity = "0.9";
 
     bg.append(orb1, orb2, orb3, pulse1, pulse2, pulse3);
   }
