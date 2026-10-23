@@ -25,7 +25,10 @@ html {
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: radial-gradient(circle at top, #1a2540 0%, var(--bg) 40%);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(121, 168, 255, 0.25), transparent 22%),
+    radial-gradient(circle at 80% 0%, rgba(91, 231, 165, 0.12), transparent 18%),
+    linear-gradient(180deg, #0c1220 0%, #0b1020 100%);
   color: var(--text);
   line-height: 1.6;
 }
@@ -50,7 +53,7 @@ img {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(16px);
-  background: rgba(11, 16, 32, 0.65);
+  background: rgba(11, 16, 32, 0.7);
   border-bottom: 1px solid var(--border);
 }
 
@@ -332,6 +335,13 @@ img {
   border-radius: 20px;
   padding: 1.5rem;
   box-shadow: 0 16px 38px rgba(2, 6, 23, 0.18);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.info-card:hover,
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(121, 168, 255, 0.5);
 }
 
 .info-card h3,
