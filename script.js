@@ -10,20 +10,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     bgStyles.textContent = `
       @keyframes techDrift {
         0% { transform: translate3d(0, 0, 0) scale(1); }
-        100% { transform: translate3d(24px, -22px, 0) scale(1.08); }
+        25% { transform: translate3d(12px, -18px, 0) scale(1.05); }
+        50% { transform: translate3d(26px, -32px, 0) scale(1.12); }
+        75% { transform: translate3d(18px, -14px, 0) scale(1.04); }
+        100% { transform: translate3d(0, 0, 0) scale(1); }
       }
+
       @keyframes techPulse {
-        0% { transform: scale(0.82); opacity: 0.18; }
-        50% { transform: scale(1.06); opacity: 0.55; }
-        100% { transform: scale(1.22); opacity: 0.12; }
+        0% { transform: scale(0.85); opacity: 0.15; }
+        30% { transform: scale(1.02); opacity: 0.38; }
+        50% { transform: scale(1.1); opacity: 0.58; }
+        80% { transform: scale(1.18); opacity: 0.28; }
+        100% { transform: scale(0.85); opacity: 0.15; }
       }
+
       .tech-orb {
         position: absolute;
         border-radius: 50%;
         background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(121,168,255,0.3) 35%, transparent 70%);
         filter: blur(2px);
-        animation: techDrift 14s ease-in-out infinite alternate;
+        animation: techDrift 18s ease-in-out infinite;
       }
+
       .tech-pulse {
         position: absolute;
         border-radius: 50%;
@@ -70,8 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     pulse2.style.right = "18%";
 
     pulse3.style.top = "42%";
-    pulse3.style.left = "50%";
-    pulse3.style.transform = "translateX(-50%)";
+    pulse3.style.left = "calc(50% - 8rem)";
 
     bg.style.position = "fixed";
     bg.style.inset = "0";
