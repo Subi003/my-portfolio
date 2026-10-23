@@ -4,6 +4,86 @@ document.addEventListener("DOMContentLoaded", async () => {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  const bg = document.getElementById("techBg");
+  if (bg) {
+    const bgStyles = document.createElement("style");
+    bgStyles.textContent = `
+      @keyframes techDrift {
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        100% { transform: translate3d(24px, -22px, 0) scale(1.08); }
+      }
+      @keyframes techPulse {
+        0% { transform: scale(0.82); opacity: 0.18; }
+        50% { transform: scale(1.06); opacity: 0.55; }
+        100% { transform: scale(1.22); opacity: 0.12; }
+      }
+      .tech-orb {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(121,168,255,0.3) 35%, transparent 70%);
+        filter: blur(2px);
+        animation: techDrift 14s ease-in-out infinite alternate;
+      }
+      .tech-pulse {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(121,168,255,0.2);
+        animation: techPulse 8s linear infinite;
+      }
+    `;
+    document.head.appendChild(bgStyles);
+
+    const orb1 = document.createElement("span");
+    const orb2 = document.createElement("span");
+    const orb3 = document.createElement("span");
+    const pulse1 = document.createElement("span");
+    const pulse2 = document.createElement("span");
+    const pulse3 = document.createElement("span");
+
+    [orb1, orb2, orb3].forEach((orb, index) => {
+      orb.className = "tech-orb";
+      orb.style.width = `${[18, 22, 14][index]}rem`;
+      orb.style.height = `${[18, 22, 14][index]}rem`;
+      orb.style.animationDelay = `${index * 1.8}s`;
+    });
+
+    orb1.style.top = "8%";
+    orb1.style.right = "12%";
+
+    orb2.style.left = "5%";
+    orb2.style.bottom = "10%";
+
+    orb3.style.right = "24%";
+    orb3.style.bottom = "18%";
+
+    [pulse1, pulse2, pulse3].forEach((pulse, index) => {
+      pulse.className = "tech-pulse";
+      pulse.style.width = "16rem";
+      pulse.style.height = "16rem";
+      pulse.style.animationDelay = `${index * 2.2}s`;
+    });
+
+    pulse1.style.top = "15%";
+    pulse1.style.left = "20%";
+
+    pulse2.style.bottom = "18%";
+    pulse2.style.right = "18%";
+
+    pulse3.style.top = "42%";
+    pulse3.style.left = "50%";
+    pulse3.style.transform = "translateX(-50%)";
+
+    bg.style.position = "fixed";
+    bg.style.inset = "0";
+    bg.style.pointerEvents = "none";
+    bg.style.zIndex = "0";
+    bg.style.overflow = "hidden";
+    bg.style.background = "linear-gradient(rgba(121, 168, 255, 0.05), rgba(121, 168, 255, 0.02)), repeating-linear-gradient(90deg, rgba(121,168,255,0.06) 0, rgba(121,168,255,0.06) 1px, transparent 1px, transparent 80px), repeating-linear-gradient(0deg, rgba(121,168,255,0.06) 0, rgba(121,168,255,0.06) 1px, transparent 1px, transparent 80px)";
+    bg.style.opacity = "0.9";
+
+    bg.append(orb1, orb2, orb3, pulse1, pulse2, pulse3);
+  }
+
   const themeToggle = document.getElementById("themeToggle");
   const storedTheme = localStorage.getItem("portfolio-theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -38,6 +118,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       applyTheme(nextTheme);
     });
   }
+
+  document.querySelectorAll("header, main, footer").forEach((el) => {
+    el.style.position = "relative";
+    el.style.zIndex = "1";
+  });
 
   const navLinks = document.querySelectorAll('.main-nav a, .btn[href^="#"]');
   navLinks.forEach((link) => {
