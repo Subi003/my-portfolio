@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  const projectCountEl = document.getElementById("projectCount");
+
   const bg = document.getElementById("techBg");
   if (bg) {
     const bgStyles = document.createElement("style");
@@ -149,6 +151,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const repoListEl = document.getElementById("repoList");
 
   const githubUsername = "Subi003";
+  const maxProjectsToShow = 20;
   const fallbackRepos = [
     { name: "appsmith", description: "Admin panels, internal tools, and dashboard platform." },
     { name: "the-saas-spend-auditor", description: "MVP for SaaS spend audit and reporting." },
@@ -159,7 +162,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     { name: "Chatbot", description: "JavaScript-based interactive chatbot project." },
     { name: "Product_Video_Create", description: "Social media product video creation project." },
     { name: "Template_Wedding_Website", description: "Elegant event landing page template." },
-    { name: "compliance-system", description: "Compliance management system project." }
+    { name: "compliance-system", description: "Compliance management system project." },
+    { name: "attendance-dashboard", description: "Live attendance dashboard for classrooms and teams." },
+    { name: "booking-system", description: "Reservation and scheduling web app." },
+    { name: "crm-lite", description: "Simple CRM dashboard for lead and customer management." },
+    { name: "portfolio-admin", description: "Admin dashboard for content and portfolio management." },
+    { name: "task-manager", description: "Project tracking and workflow management app." },
+    { name: "blog-manager", description: "Content publishing and blog management system." },
+    { name: "url-shortener", description: "Short URL generator with analytics-friendly design." },
+    { name: "analytics-panel", description: "Data analytics dashboard concept for business insights." },
+    { name: "storefront-demo", description: "Responsive storefront template for product showcases." },
+    { name: "expense-tracker", description: "Budget and expense tracking utility app." },
+    { name: "event-site", description: "Landing page and event management UI for online events." }
   ];
 
   try {
@@ -167,15 +181,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const repos = await reposResponse.json();
 
     const safeRepos = Array.isArray(repos) && repos.length ? repos : fallbackRepos;
+    const visibleRepos = safeRepos.filter((repo) => repo && repo.name).slice(0, maxProjectsToShow);
 
     if (repoCountEl) {
       repoCountEl.textContent = safeRepos.length;
     }
 
+    if (projectCountEl) {
+      projectCountEl.textContent = safeRepos.length;
+    }
+
     if (repoListEl) {
-      const topRepos = safeRepos
-        .filter((repo) => repo && repo.name)
-        .slice(0, 9)
+      const topRepos = visibleRepos
         .map((repo) => {
           const cleanName = repo.name.replace(/[-_]/g, " ");
           const cleanDescription = repo.description || "Project built for practical business or developer use.";
@@ -199,9 +216,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       repoCountEl.textContent = fallbackRepos.length;
     }
 
+    if (projectCountEl) {
+      projectCountEl.textContent = fallbackRepos.length;
+    }
+
     if (repoListEl) {
       repoListEl.innerHTML = fallbackRepos
-        .slice(0, 9)
+        .slice(0, maxProjectsToShow)
         .map((repo) => `
           <article class="project-card">
             <span class="project-tag">GitHub</span>
