@@ -61,10 +61,23 @@ img {
 }
 
 .brand {
-  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.brand-mark {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d9e6ff, var(--primary));
+  color: #09111d;
+  font-size: 0.8rem;
 }
 
 .main-nav {
@@ -158,6 +171,31 @@ img {
   background: rgba(255, 255, 255, 0.03);
 }
 
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.social-row a {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--highlight);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.social-row a:hover,
+.social-row a:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(121, 168, 255, 0.6);
+}
+
 .meta-list {
   display: flex;
   flex-wrap: wrap;
@@ -188,7 +226,7 @@ img {
   height: 88px;
   display: grid;
   place-items: center;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 800;
   border-radius: 50%;
   background: linear-gradient(135deg, #d9e6ff, var(--primary));
@@ -311,7 +349,7 @@ img {
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  padding: 2rem 2rem;
+  padding: 2rem;
   background: linear-gradient(135deg, rgba(121, 168, 255, 0.15), rgba(17, 24, 39, 0.9));
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -331,6 +369,9 @@ img {
 .social-links a {
   color: var(--highlight);
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .social-links a:hover,

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
@@ -17,4 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
+
+  const followersCount = document.getElementById("followersCount");
+  const repoCount = document.getElementById("repoCount");
+
+  const githubUsername = "Subi003";
+
+  try {
+    const userResponse = await fetch(`https://api.github.com/users/${githubUsername}`);
+    const userData = await userResponse.json();
+
+    const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?per_page=100`);
+    const reposData = await reposResponse.json();
+
+    if (followersCount && typeof userData.followers === "number") {
+      followersCount.textContent = userData.followers;
+    }
+
+    if (repoCount && Array.isArray(reposData)) {
+      repoCount.textContent = reposData.length;
+    }
+  } catch (error) {
+    if (followersCount) followersCount.textContent = "0";
+    if (repoCount) repoCount.textContent = "0";
+  }
 });
